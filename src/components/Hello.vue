@@ -1,32 +1,34 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
+    <h2>Bellow put some number to sort:</h2>
+    <form role="form" class="form">
+      <input type="number" name="inputNumber" id="inputNumber" v-model="number"/>
+      <button class="ordenizer" type="submit">Order</button>
+    </form>
+    <ul class="courses" id="mix-wrapper">
+       <li class="mix-target" v-for="n in displaying" v-bind:data-order="n">
+          <span>{{n}}</span>
+       </li>
     </ul>
   </div>
 </template>
 
 <script>
+require('mixitup');
+
 export default {
   name: 'hello',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Welcome to El Comercio Sort Assessment',
+      number: 0,
     };
+  },
+  computed: {
+    displaying() {
+      return this.number.toString().split('');
+    },
   },
 };
 </script>
@@ -40,6 +42,7 @@ h1, h2 {
 ul {
   list-style-type: none;
   padding: 0;
+  font-size: 3rem;
 }
 
 li {
@@ -49,5 +52,29 @@ li {
 
 a {
   color: #42b983;
+}
+
+form {
+  display: flex;
+  flex: 1 0;
+  justify-content: center;
+}
+
+#inputNumber {
+  background: rgba(128, 128, 128, 0.13);
+  font-size: 24px;
+  height: 3rem;
+  border: none;
+}
+button.ordenizer {
+  background: #fbbe00;
+  border: 0;
+  padding: 1rem;
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
 }
 </style>
