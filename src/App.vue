@@ -27,5 +27,6 @@ export default {
 }
 img {
   width: 10rem;
+  border-radius: 50%;
 }
 </style>
