@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # el-comercio-test
 
 > Small Number's sort assessment
@@ -27,6 +26,3 @@ npm test
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 =======
-# El-Comersio-Test
-Small Number's sort-test 
->>>>>>> cec350d5d359fab94ca5fc2506c10142ccf94e72
