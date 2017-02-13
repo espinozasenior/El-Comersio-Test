@@ -11,7 +11,7 @@ Dependencies
 -------------
 > - Nodejs (tested over version:  7.3.0).
 > - NPM (tested over version: 3.10.10)
-> - Vuejs V.2 Frontend framework ([Source][1])
+> - Vuejs V.2 Frontend framework ([Source][1]) - Top-notch framework similar to React JS.
 > - Mixitup sort library  ([Source][2]) *used to apply animation over the sort functions*
 > - Eslint ([Source][3]) *Dev tool/library used to apply "Strict Syntax" on html/js files.*
 > - Webpack ([Source][4]) *Dev tool to implement "Hot refresh" and takes modules with dependencies and generates static assets representing those modules.*
