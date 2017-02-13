@@ -2,20 +2,18 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Bellow put some number to sort:</h2>
-    <form role="form" class="form">
-      <input type="number" name="inputNumber" id="inputNumber" v-model="number"/>
-      <button class="ordenizer" type="submit">Order</button>
-    </form>
+    <div class="form">
+      <input type="text" pattern="[0-9]*" name="inputNumber" id="inputNumber" v-model="number"/>
+      <button class="sort-btn" v-on:click="sorting">Order</button>
+    </div>
     <ul class="courses" id="mix-wrapper">
-       <li class="mix-target" v-for="n in displaying" v-bind:data-order="n">
-          <span>{{n}}</span>
-       </li>
+      <li class="mix-target undergraduate" v-for="n in displaying" v-bind:data-order="n"><span>{{n}}</span></li>
     </ul>
   </div>
 </template>
 
 <script>
-require('mixitup');
+import mixitup from 'mixitup';
 
 export default {
   name: 'hello',
@@ -23,11 +21,32 @@ export default {
     return {
       msg: 'Welcome to El Comercio Sort Assessment',
       number: 0,
+      ref: null,
     };
   },
   computed: {
     displaying() {
       return this.number.toString().split('');
+    },
+  },
+  methods: {
+    sorting() {
+      if (this.ref !== null) {
+        this.ref.destroy();
+      }
+      this.ref = mixitup('#mix-wrapper', {
+        animation: {
+          effects: 'fade rotateZ(-180deg)',
+          duration: 700,
+        },
+        classNames: {
+          elementSort: 'sort-btn',
+        },
+        selectors: {
+          target: '.mix-target',
+        },
+      });
+      this.ref.sort('order:asc');
     },
   },
 };
@@ -54,7 +73,7 @@ a {
   color: #42b983;
 }
 
-form {
+.form {
   display: flex;
   flex: 1 0;
   justify-content: center;
@@ -66,7 +85,7 @@ form {
   height: 3rem;
   border: none;
 }
-button.ordenizer {
+button.sort-btn {
   background: #fbbe00;
   border: 0;
   padding: 1rem;
